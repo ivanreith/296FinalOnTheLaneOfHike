@@ -12,5 +12,9 @@ namespace OnTheLaneOfHike.Controllers
         {
             return View();
         }
+        public IActionResult Proposal()
+        {
+            return View();
+        }
     }
 }

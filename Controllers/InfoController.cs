@@ -12,5 +12,13 @@ namespace OnTheLaneOfHike.Controllers
         {
             return View();
         }
+        public IActionResult Weather()
+        {
+            return View();
+        }
+        public IActionResult CovidInfo()
+        {
+            return View();
+        }
     }
 }
