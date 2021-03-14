@@ -8,7 +8,7 @@ namespace OnTheLaneOfHike.Models
 {
     public class EventModel
     {
-        public List<CommentModel> comments = new List<CommentModel>();
+        
         [Key]
         public int EventID { get; set; }
         [Required]
@@ -18,11 +18,8 @@ namespace OnTheLaneOfHike.Models
         [MaxLength(250, ErrorMessage = "storyText between 1 and 250 chars")]
         public string EventText { get; set; }
         public DateTime EventTime { get; set; }
-        // public AppUser Member {get; set;}
-        public List<CommentModel> Comments
-        {
-            get { return comments; }
-        }
+        public MemberModel Member {get; set;}
+        
         public string Slug =>
          EventTitle?.Replace(' ', '-').ToLower() + '-' + EventID.ToString();
     }
