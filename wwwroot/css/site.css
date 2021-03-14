@@ -9,6 +9,10 @@ navbar
 {
    
 }
+aside
+{
+    float:right;
+}
 .sticky {
     position: fixed;
     top: 0;
@@ -20,7 +24,18 @@ a.navbar-brand {
   word-break: break-all;
   
 }
-
+.img-left {
+    float: left;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+.img-right {
+    float: right;
+    margin-left: 5px;
+    margin-right: 5px;
+}		
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;

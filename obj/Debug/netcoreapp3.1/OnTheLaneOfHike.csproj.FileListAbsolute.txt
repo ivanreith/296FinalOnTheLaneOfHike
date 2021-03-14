@@ -113,3 +113,4 @@ D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\bin\Debug\netcoreapp3.1\runt
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\bin\Debug\netcoreapp3.1\appsettings.Production.json

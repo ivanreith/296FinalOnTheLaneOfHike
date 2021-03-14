@@ -1,9 +1,91 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<PostModel>
 @{
+    ViewBag.Title = "Story";
 }
-<h1>Your Adventures</h1>
+
+<h2>Tell us about your hiking adventures.</h2>
+
+<a asp-controller="Post" asp-action="Add">Add your adventure!</a>
+<table class="table table-bordered table-striped">
+    <thead>
+
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <th>Title</th>
+                    <th>Topic</th>
+                    <th>Text</th>
+                    <th>User Name</th>
+                    <th>Last Updated</th>
+                    <th></th>
+
+                </tr>
+                <tr>
+                    <td>@post.PostTitle</td>
+                    <td>@post.PostTopic</td>
+                    <td>@post.PostText</td>
+                    @if (post.Member.Name != null)
+                    {
+                        <td>@post.Member.Name</td>
+                    }
+                    else
+                    {
+                        <td>Story without user</td>
+                    }
+                    <td>@post.PostTime</td>
+                    <td>
+                        <a asp-controller="Post" asp-action="Edit"
+                           asp-route-id="@post.PostID"
+                           asp-route-slug="@post.Slug">Edit</a>
+                        <a asp-controller="Post" asp-action="Delete"
+                           asp-route-id="@post.PostID"
+                           asp-route-slug="@post.Slug">Delete</a>
+                        <a asp-controller="Post" asp-action="Comment"
+                           asp-route-id="@post.PostID"
+                           asp-route-slug="@post.Slug">Comment</a>
+                    </td>
+                </tr>
+                @if (post.Comments.Count != 0)
+                {
+                    <tr>
+                        <td></td>
+                        <td>
+                            <b>Comments about this story:</b>
+                        </td>
+                    </tr>
+                    @foreach (CommentModel comment in post.Comments)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>
+                                <strong>-</strong>
+                                @comment.CommentText
+                            </td>
+                            <td>
+                                <strong>Posted By:</strong>
+                                @comment.Member.Name
+                            </td>
+                            <td>
+                                <strong>When:</strong>
+                                @comment.CommentDate
+                            </td>
 
 
-    <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="AddPost">To add a post of your own</a>
+                        </tr>
+                    }
+                }
+
+
+
+
+
+
+
+            }
+        }
+    </tbody>
+</table>

@@ -64,6 +64,11 @@ namespace OnTheLaneOfHike
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        
+            var serviceProvider = app.ApplicationServices;
+           // var userManager = serviceProvider.GetRequiredService<UserManager<MemberModel>>();
+           // var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+          //  SeedData.CreateAdminUser(serviceProvider).Wait();
         }
     }
 }
