@@ -24,7 +24,7 @@ namespace OnTheLaneOfHike.Repositories
         }
         public void AddProposal(ProposalModel proposal)
         {
-            proposal.ProposalTime= DateTime.Now;
+            //proposal.ProposalTime= DateTime.Now;
 
             context.Proposals.Add(proposal);
             context.SaveChanges();

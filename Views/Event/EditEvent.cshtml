@@ -19,17 +19,23 @@
         <label asp-for="EventTitle">Title</label>
         <input asp-for="EventTitle" class="form-control">
         <span asp-validation-for="EventTitle" class="text-danger"></span>
-    </div>  
+    </div>
     <div class="form-group">
         <label asp-for="EventText">Text</label>
         <input asp-for="EventText" class="form-control">
         <span asp-validation-for="EventText" class="text-danger"></span>
     </div>
-
+    
+        <div class="form-group">
+            <label asp-for="EventTime" class="control-label"></label>
+            <input asp-for="EventTime" type="date" class="form-control" />
+            <span asp-validation-for="EventTime" class="text-danger"></span>
+        </div>
+    
     <input type="hidden" asp-for="EventID" value=@Model.EventID />
 
     <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
-    <a asp-controller="Event" asp-action="EditEvent"
+    <a asp-controller="Event" asp-action="Index"
        class="btn btn-primary">Cancel</a>
 </form>
 @*  <input type="hidden" asp-for="Name" value=@User.Identity.Name />  removed from the story model*@
