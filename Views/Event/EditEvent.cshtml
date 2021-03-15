@@ -3,10 +3,10 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+
 
 @{
-    string title = ViewBag.Action + " Story";
+    string title = ViewBag.Action + " Event";
     ViewBag.Title = title;
 }
 
@@ -34,8 +34,8 @@
     
     <input type="hidden" asp-for="EventID" value=@Model.EventID />
 
-    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <button type="submit" class="btn btn-success">@ViewBag.Action</button>
     <a asp-controller="Event" asp-action="Index"
-       class="btn btn-primary">Cancel</a>
+       class="btn btn-warning">Cancel</a>
 </form>
 @*  <input type="hidden" asp-for="Name" value=@User.Identity.Name />  removed from the story model*@

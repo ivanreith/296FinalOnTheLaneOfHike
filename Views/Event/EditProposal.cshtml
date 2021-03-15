@@ -6,7 +6,7 @@
 <h1>Edit</h1>
 
 @{
-    string title = ViewBag.Action + " Story";
+    string title = ViewBag.Action + "  ";
     ViewBag.Title = title;
 }
 
@@ -14,21 +14,33 @@
 
 <form asp-action="EditProposal" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
-
-    <div class="form-group">
-        <label asp-for="ProposalTitle">Title</label>
-        <input asp-for="ProposalTitle" class="form-control">
-        <span asp-validation-for="ProposalTitle" class="text-danger"></span>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="ProposalTitle">Title</label>
+                <input asp-for="ProposalTitle" class="form-control">
+                <span asp-validation-for="ProposalTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="ProposalText">Text</label>
+                <input asp-for="ProposalText" class="form-control">
+                <span asp-validation-for="ProposalText" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="ProposalTime" class="control-label"></label>
+                <input asp-for="ProposalTime" type="date" class="form-control" />
+                <span asp-validation-for="ProposalTime" class="text-danger"></span>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="ProposalText">Text</label>
-        <input asp-for="ProposalText" class="form-control">
-        <span asp-validation-for="ProposalText" class="text-danger"></span>
-    </div>
-    <input type="hidden" asp-for="ProposalID" value=@Model.ProposalID />
+            <input type="hidden" asp-for="ProposalID" value=@Model.ProposalID />
 
-    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
-    <a asp-controller="Event" asp-action="Proposal"
-       class="btn btn-primary">Cancel</a>
+            <button type="submit" class="btn btn-success">@ViewBag.Action</button>
+            <a asp-controller="Event" asp-action="Proposal"
+               class="btn btn-warning">Cancel</a>
 </form>
 @*  <input type="hidden" asp-for="Name" value=@User.Identity.Name />  removed from the story model*@

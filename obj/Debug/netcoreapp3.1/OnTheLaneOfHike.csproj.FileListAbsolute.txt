@@ -120,3 +120,5 @@ D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razo
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\EditProposal.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Post\AddComment.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Delete.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\DeleteEvent.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\DeleteProposal.cshtml.g.cs

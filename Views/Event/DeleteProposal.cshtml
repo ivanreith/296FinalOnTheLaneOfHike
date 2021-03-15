@@ -1,0 +1,23 @@
+﻿@model ProposalModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<br />
+<br />
+@{
+    string title = ViewBag.Action + " Proposal";
+    ViewBag.Title = title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h2>Confirm Deletion</h2>
+<h3>@Model.ProposalTitle (@Model.ProposalText)</h3>
+
+<form asp-action="DeleteProposal" method="post">
+    <input type="hidden" asp-for="ProposalID" />
+
+    <button type="submit" class="btn btn-success">Delete</button>
+    <a asp-controller="Event" asp-action="Proposal"
+       class="btn btn-warning">Cancel</a>
+</form>

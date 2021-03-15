@@ -2,10 +2,11 @@
 @{
     ViewBag.Title = "Events";
 }
-<h1>Events Page</h1>
-
+<h1>Proposals Page</h1>
+@if (User.Identity.IsAuthenticated)
+{
 <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="AddProposal">Propose an Event</a>
-
+}
 <table class="table table-bordered table-striped">
     <thead>
 

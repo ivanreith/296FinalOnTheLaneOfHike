@@ -143,7 +143,7 @@ namespace OnTheLaneOfHike.Controllers
             return RedirectToAction("Index", "Post");
         }
 
-        
+        [Authorize]
         [HttpGet]
         public IActionResult AddComment(int id)
         {
@@ -156,14 +156,14 @@ namespace OnTheLaneOfHike.Controllers
             }
             return RedirectToAction("Index", "Post");
         }
-      
+      [Authorize]
         [HttpPost]
         public RedirectToActionResult AddComment(CommentViewModel commentViewModel)
         {
 
             // here we pass the data from the view into the new real model for the DB
             var comment = new CommentModel { CommentText = commentViewModel.CommentText };
-            if (commentViewModel.PostID > 1000 && commentViewModel.CommentText != null) // to check if it got to this point empty, ZAP testing
+            if (commentViewModel.CommentText != null) // to check if it got to this point empty, ZAP testing
             {
                 comment.Member = userManager.GetUserAsync(User).Result;
                 comment.CommentDate = DateTime.Now;
@@ -188,28 +188,12 @@ namespace OnTheLaneOfHike.Controllers
             return RedirectToAction("Index", "Post");
 
         }
-        /*  NOT SURE IF NEEDED ******************
-          public IActionResult Stories()
+        public IActionResult DeleteComment(int id)
         {
 
-            List<StoriesModelForm> stories = Repo.stories.ToList<StoriesModelForm>();
-
-            return View(stories);
+            var comment = dbcontext.Comments.Find(id);
+            Repo.DeleteComment(comment);
+            return RedirectToAction("Index","Post");
         }
-
-        SAME THING
-
-          PostModel post = new PostModel
-                    {
-                        PostTitle = newPost.PostTitle,
-                        PostText = newPost.PostText,
-                        PostTopic = newPost.PostTopic,
-                        PostTime = DateTime.Now,
-
-
-
-
-                    }
-         * */
     }
 }

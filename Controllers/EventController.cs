@@ -31,6 +31,7 @@ namespace OnTheLaneOfHike.Controllers
 
             return View(events);
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult AddEvent()
         {
@@ -40,6 +41,7 @@ namespace OnTheLaneOfHike.Controllers
             ViewBag.Users = Context.Members.OrderBy(g => g.Name).ToList();
             return View("AddEvent", events);  
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AddEvent(EventViewModel events)
         {
@@ -58,6 +60,7 @@ namespace OnTheLaneOfHike.Controllers
             }
             return View();
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult EditEvent(int id)
         {
@@ -68,7 +71,7 @@ namespace OnTheLaneOfHike.Controllers
             //  var story = Context.Story.Find(id);
             return View(events);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult EditEvent(EventModel events)
         {
@@ -110,6 +113,7 @@ namespace OnTheLaneOfHike.Controllers
 
             return View(events);
         }
+        [Authorize]
         [HttpGet]
         public IActionResult AddProposal()
         {
@@ -119,6 +123,7 @@ namespace OnTheLaneOfHike.Controllers
             ViewBag.Users = Context.Members.OrderBy(g => g.Name).ToList();
             return View("AddProposal", proposal);
         }
+        [Authorize]
         [HttpPost]
         public IActionResult AddProposal(ProposalViewModel proposal)
         {
@@ -137,6 +142,7 @@ namespace OnTheLaneOfHike.Controllers
             }
             return View();
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult EditProposal(int id)
         {
@@ -147,7 +153,7 @@ namespace OnTheLaneOfHike.Controllers
             //  var story = Context.Story.Find(id);
             return View(newpropo);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult EditProposal(ProposalModel proposal)
         {
@@ -176,9 +182,9 @@ namespace OnTheLaneOfHike.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult DeleteProposal(EventModel events)
+        public IActionResult DeleteProposal(ProposalModel proposal)
         {
-            Repo.DeleteEvent(events);
+            Repopro.DeleteProposal(proposal);
             return RedirectToAction("Proposal", "Event");
         }
 
