@@ -1,0 +1,34 @@
+﻿@model ProposalModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+@{
+    string title = ViewBag.Action + " Story";
+    ViewBag.Title = title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="EditProposal" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="ProposalTitle">Title</label>
+        <input asp-for="ProposalTitle" class="form-control">
+        <span asp-validation-for="ProposalTitle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProposalText">Text</label>
+        <input asp-for="ProposalText" class="form-control">
+        <span asp-validation-for="ProposalText" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="ProposalID" value=@Model.ProposalID />
+
+    <button type="submit" class="btn btn-primary">@ViewBag.Action</button>
+    <a asp-controller="Event" asp-action="EditProposal"
+       class="btn btn-primary">Cancel</a>
+</form>
+@*  <input type="hidden" asp-for="Name" value=@User.Identity.Name />  removed from the story model*@

@@ -10,6 +10,10 @@ namespace OnTheLaneOfHike.Repositories
     public class ProposalRepository : IProposalRepository
     {
         DataBaseContext context;
+        public ProposalRepository(DataBaseContext c)
+        {
+            context = c;
+        }
         public IQueryable<ProposalModel> proposals
         {
             get

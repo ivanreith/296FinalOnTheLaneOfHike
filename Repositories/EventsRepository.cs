@@ -10,7 +10,11 @@ namespace OnTheLaneOfHike.Repositories
     public class EventsRepository : IEventsRepository
     {
         DataBaseContext context;
-        public IQueryable<EventModel> events
+        public EventsRepository(DataBaseContext c)
+        {
+            context = c;
+        }
+        public IQueryable<EventModel> Events
         {
             get
             {
@@ -21,7 +25,7 @@ namespace OnTheLaneOfHike.Repositories
 
         public void AddEvent(EventModel events)
         {
-            events.EventTime = DateTime.Now;
+           // events.EventTime = DateTime.Now;
            
             context.Event.Add(events);
             context.SaveChanges();

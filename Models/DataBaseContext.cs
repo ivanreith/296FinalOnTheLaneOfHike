@@ -11,9 +11,9 @@ namespace OnTheLaneOfHike.Models
 {
     public class DataBaseContext : IdentityDbContext
     {
-       // public DataBaseContext()
-       // {
-      //  }
+        public DataBaseContext()
+        {
+        }
 
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base(options)

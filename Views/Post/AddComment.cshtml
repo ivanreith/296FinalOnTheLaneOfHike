@@ -12,7 +12,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-<form asp-action="Comment" method="post">
+<form asp-controller="Post" asp-action="Comment" method="post">
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="form-group">
@@ -25,7 +25,7 @@
 
 
     <button type="submit" class="btn btn-primary">@ViewBag.Title</button>
-    <a asp-controller="Home" asp-action="Stories"
+    <a asp-controller="Post" asp-action="Index"
        class="btn btn-primary">Cancel</a>
     <input type="hidden" asp-for="PostID" />
 </form>

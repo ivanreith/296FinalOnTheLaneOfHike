@@ -5,7 +5,7 @@
 
 <h2>Tell us about your hiking adventures.</h2>
 
-<a asp-controller="Post" asp-action="Add">Add your adventure!</a>
+<a asp-controller="Post" asp-action="AddPost">Add your adventure!</a>
 <table class="table table-bordered table-striped">
     <thead>
 
@@ -25,6 +25,13 @@
 
                 </tr>
                 <tr>
+                    <td>
+                        <img src="~/images/@post.ProfilePicture"
+                             class=""
+                             height="100" width="100"
+                             asp-append-version="true" />
+                        @post.Member.UserName
+                    </td>
                     <td>@post.PostTitle</td>
                     <td>@post.PostTopic</td>
                     <td>@post.PostText</td>
@@ -38,13 +45,16 @@
                     }
                     <td>@post.PostTime</td>
                     <td>
+                        @if (User.IsInRole("Admin"))
+                        {
                         <a asp-controller="Post" asp-action="Edit"
                            asp-route-id="@post.PostID"
                            asp-route-slug="@post.Slug">Edit</a>
                         <a asp-controller="Post" asp-action="Delete"
                            asp-route-id="@post.PostID"
                            asp-route-slug="@post.Slug">Delete</a>
-                        <a asp-controller="Post" asp-action="Comment"
+                        }
+                        <a asp-controller="Post" asp-action="AddComment"
                            asp-route-id="@post.PostID"
                            asp-route-slug="@post.Slug">Comment</a>
                     </td>
@@ -78,13 +88,6 @@
                         </tr>
                     }
                 }
-
-
-
-
-
-
-
             }
         }
     </tbody>

@@ -8,7 +8,7 @@ namespace OnTheLaneOfHike.Repositories
 {
     public interface IEventsRepository
     {
-        IQueryable<EventModel> events { get; }
+        IQueryable<EventModel> Events { get; }
         void AddEvent(EventModel events);  // create
         EventModel GetEventById(int EventId); //Retrieve a story by topic
         void UpdateEvent(EventModel events);

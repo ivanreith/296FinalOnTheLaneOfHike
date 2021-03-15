@@ -1,8 +1,64 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<EventModel>
 @{
+    ViewBag.Title = "Events";
 }
+<br />
+<br />
 <h1>Events Page</h1>
+<a asp-controller="Event" asp-action="AddEvent">Create Event</a>
+  
+    <a class="nav-link text-info" asp-area="" asp-controller="Event" asp-action="Proposal">See proposals</a>
+    <table class="table table-bordered table-striped">
+        <thead>
 
-    <a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="Proposal">Propose an Event</a>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var events in Model)
+                {
+                    <tr>
+                        <th>Title</th>                      
+                        <th>Text</th>
+                        <th>User Name</th>
+                        <th>Last Updated</th>
+                        <th>Actions</th>
+
+                    </tr>
+                    <tr>
+                        <td>@events.EventTitle</td>                        
+                        <td>@events.EventText</td>
+                       
+                        @if (events.Member.UserName != null)
+                        {
+                            <td>@events.Member.UserName</td>
+                        }
+                        else
+                        {
+                            <td>Member not found</td>
+                        }
+                        <td>@events.EventTime</td>
+                       @if (User.IsInRole("Admin"))
+                       {
+                        <td>
+                            <a asp-controller="Event" asp-action="EditEvent"
+                               asp-route-id="@events.EventID"
+                               asp-route-slug="@events.Slug">Edit</a>
+                            <a asp-controller="Event" asp-action="DeleteEvent"
+                               asp-route-id="@events.EventID"
+                               asp-route-slug="@events.Slug">Delete</a>
+                           
+                        </td>
+                       }
+                    </tr>
+                 
+
+
+
+
+
+
+                }
+            }
+        </tbody>
+    </table>

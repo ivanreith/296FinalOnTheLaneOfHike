@@ -8,7 +8,7 @@ namespace OnTheLaneOfHike.Models
 {
     public class MemberViewModel
     {
-        public IEnumerable<MemberModel> Users { get; set; }
+        public IEnumerable<MemberModel> Members { get; set; }
         public IEnumerable<IdentityRole> Roles { get; set; }
     }
 }

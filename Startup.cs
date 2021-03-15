@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,8 @@ namespace OnTheLaneOfHike
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IAppRepository, AppRepository>(); // repository Interface then repo class
+            services.AddTransient<IEventsRepository, EventsRepository>();
+            services.AddTransient<IProposalRepository, ProposalRepository>();
             services.AddControllersWithViews();
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("DataBaseContext")));
@@ -51,13 +54,22 @@ namespace OnTheLaneOfHike
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.Use(async (ctx, next) => {  //for header not set error
+                ctx.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                ctx.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+                await next();
+            });
+
+            // cache control
+        
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
-                    
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -65,10 +77,10 @@ namespace OnTheLaneOfHike
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         
-            var serviceProvider = app.ApplicationServices;
+           // var serviceProvider = app.ApplicationServices;
            // var userManager = serviceProvider.GetRequiredService<UserManager<MemberModel>>();
-           // var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-          //  SeedData.CreateAdminUser(serviceProvider).Wait();
+          // var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            SeedData.CreateAdminUser(app.ApplicationServices).Wait();
         }
     }
 }

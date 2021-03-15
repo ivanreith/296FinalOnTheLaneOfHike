@@ -34,7 +34,7 @@ namespace OnTheLaneOfHike.Controllers
             }
             MemberViewModel model = new MemberViewModel
             {
-                Users = users,
+                Members = users,
                 Roles = roleManager.Roles
             };
             return View(model);
