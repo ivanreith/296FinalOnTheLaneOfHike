@@ -1,96 +1,97 @@
 ﻿@model MemberViewModel
 @{
-    ViewData["Title"] = " | Manage Users";
+    ViewData["Title"] = " Manage Users";
 }
 
-<h1 class="mb-2">Manage Users</h1>
+<h1>Manage Users</h1>
 
-<h5 class="mt-2"><a asp-controller="Account" asp-action="Register">Add a Member</a></h5>
+<h5><a asp-controller="Account" asp-action="Register">Add a Member</a></h5>
 
-<table class="table table-bordered table-striped table-sm" background-color="teal">
-<thead>
-    <tr><th>Member Name</th><th>Roles</th><th></th><th></th><th></th></tr>
-</thead>
-<tbody>
-    @if (Model.Members.Count() == 0)
-    {
-        <tr><td colspan="5">There are no user accounts.</td></tr>
-    }
-    else
-    {
-        @foreach (MemberModel member in Model.Members)
+<table class=" table-bordered table-striped table-sm" background-color="teal">
+    <thead>
+        <tr><th>Member Name</th><th>Roles</th><th></th><th></th><th></th></tr>
+    </thead>
+    <tbody>
+        @if (Model.Members == null)  //Model.Members.Count() == 0
         {
-            <tr>
-                <td>@member.UserName</td>
-                <td>
-                    @foreach (string roleName in member.RoleNames)
-                    {
-                        <div>@roleName</div>
-                    }
-                </td>
-                <td>
-                    <form background-color="light-green" asp-controller="User" method="post" asp-action="Delete"
-                          asp-route-id="@member.Id">
-                        <button type="submit" class="btn btn-danger">
-                            Delete User
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post"asp-controller="User" asp-action="AddToAdmin"
-                          asp-route-id="@member.Id">
-                        <button type="submit" class="btn btn-success">
-                            Add To Admin
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" asp-controller="User" asp-action="RemoveFromAdmin"
-                          asp-route-id="@member.Id">
-                        <button type="submit" class="btn btn-warning">
-                            Remove From Admin
-                        </button>
-                    </form>
-                </td>
-            </tr>
+        <tr><td>There are no user accounts.</td></tr>
         }
-    }
-</tbody>
-</table>
-
-<h1 class="mb-2">Manage Roles</h1>
-
-@if (Model.Roles.Count() == 0)
-{
-    <form method="post"asp-controller="User" asp-action="CreateAdminRole">
-        <button type="submit" class="btn btn-success">
-            Create Admin Role
-        </button>
-    </form>
-}
-
-else
-{
-    <table class="table table-bordered table-striped table-sm">
-        <thead>
-            <tr><th>Role</th><th></th></tr>
-        </thead>
-        <tbody>
-            @foreach (var role in Model.Roles)
+        else
+        {
+        @foreach (MemberModel member in Model.Members)
             {
-                <tr>
-                    <td>@role.Name</td>
-                    <td>
-                        <form method="post"asp-controller="User" asp-action="DeleteRole"
-                              asp-route-id="@role.Id">
-                            <button type="submit" class="btn btn-danger">
-                                Delete Role
-                            </button>
-                        </form>
-                    </td>
-                </tr>
+        <tr>
+            <td>@member.UserName</td>
+            <td>
+                @foreach (string roleName in member.RoleNames)
+                        {
+                <div>@roleName</div>
+                        }
+            </td>
+            <td>
+                <form background-color="light-green" asp-controller="User" method="post" asp-action="Delete"
+                      asp-route-id="@member.Id">
+                    <button type="submit" class="btn btn-danger">
+                        Delete User
+                    </button>
+                </form>
+            </td>
+            <td>
+                <form method="post" asp-controller="User" asp-action="AddToAdmin"
+                      asp-route-id="@member.Id">
+                    <button type="submit" class="btn btn-success">
+                        Add To Admin
+                    </button>
+                </form>
+            </td>
+            <td>
+                <form method="post" asp-controller="User" asp-action="RemoveFromAdmin"
+                      asp-route-id="@member.Id">
+                    <button type="submit" class="btn btn-warning">
+                        Remove From Admin
+                    </button>
+                </form>
+            </td>
+        </tr>
             }
-        </tbody>
-    </table>
-    <br />
-}
+        }
+    </tbody>
+</table>
+@*    // disabled for being only one rol
+
+    <h1 class="mb-2">Manage Roles</h1>
+
+        @if (Model.Roles.Count() == 0)
+        {
+            <form method="post"asp-controller="User" asp-action="CreateAdminRole">
+                <button type="submit" class="btn btn-success">
+                    Create Admin Role
+                </button>
+            </form>
+        }
+
+        else
+        {
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                    <tr><th>Role</th><th></th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var role in Model.Roles)
+                    {
+                        <tr>
+                            <td>@role.Name</td>
+                            <td>
+                                <form method="post"asp-controller="User" asp-action="DeleteRole"
+                                      asp-route-id="@role.Id">
+                                    <button type="submit" class="btn btn-danger">
+                                        Delete Role
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+        }*@
