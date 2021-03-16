@@ -28,6 +28,7 @@ namespace OnTheLaneOfHike
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddResponseCaching();// security add
             services.AddTransient<IAppRepository, AppRepository>(); // repository Interface then repo class
             services.AddTransient<IEventsRepository, EventsRepository>();
             services.AddTransient<IProposalRepository, ProposalRepository>();
@@ -67,9 +68,29 @@ namespace OnTheLaneOfHike
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseResponseCaching(); // security add
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
+            app.Use(async (context, next) =>  // security add
+            {
+                context.Response.GetTypedHeaders().CacheControl =
+                    new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+                    {
+                        Public = true,
+                        MaxAge = TimeSpan.FromSeconds(10),
+                        NoCache = true,
+                        NoStore = true,
+                        MustRevalidate = true,
+                        Private=true
+                    };
+                context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
+                    new string[] { "Accept-Encoding" };
+
+                await next();
+            });
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -77,9 +98,7 @@ namespace OnTheLaneOfHike
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         
-           // var serviceProvider = app.ApplicationServices;
-           // var userManager = serviceProvider.GetRequiredService<UserManager<MemberModel>>();
-          // var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        
             SeedData.CreateAdminUser(app.ApplicationServices).Wait();
         }
     }

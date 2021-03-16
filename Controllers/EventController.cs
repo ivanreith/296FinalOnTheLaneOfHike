@@ -142,7 +142,7 @@ namespace OnTheLaneOfHike.Controllers
             }
             return View();
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet]
         public IActionResult EditProposal(int id)
         {
@@ -153,7 +153,7 @@ namespace OnTheLaneOfHike.Controllers
             //  var story = Context.Story.Find(id);
             return View(newpropo);
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public IActionResult EditProposal(ProposalModel proposal)
         {
@@ -172,7 +172,7 @@ namespace OnTheLaneOfHike.Controllers
                 return View(proposal);
             }
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet]
         public IActionResult DeleteProposal(int id)
         {
@@ -180,7 +180,7 @@ namespace OnTheLaneOfHike.Controllers
             var proposal = Context.Proposals.Find(id);
             return View(proposal);
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public IActionResult DeleteProposal(ProposalModel proposal)
         {

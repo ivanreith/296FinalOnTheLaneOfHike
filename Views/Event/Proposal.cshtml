@@ -37,7 +37,7 @@
                         <td>Member not found</td>
                     }
                     <td>@proposal.ProposalTime</td>
-                    @if (User.IsInRole("Admin"))
+                    @if (User.IsInRole("Admin") || User.Identity.Name == proposal.Member.Name)
                     {
                         <td>
                             <a asp-controller="Event" asp-action="EditProposal"
