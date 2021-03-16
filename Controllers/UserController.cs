@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OnTheLaneOfHike.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     //[Area("Admin")]
     public class UserController : Controller
     {
@@ -24,7 +24,7 @@ namespace OnTheLaneOfHike.Controllers
             roleManager = roleMngr;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Admin()
         {
             List<MemberModel> users = new List<MemberModel>();
             foreach (MemberModel user in userManager.Users)
@@ -39,7 +39,7 @@ namespace OnTheLaneOfHike.Controllers
             };
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
         {
@@ -58,7 +58,7 @@ namespace OnTheLaneOfHike.Controllers
                     TempData["message"] = errorMessage;
                 }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin", "Home");
         }
 
         [HttpGet]
@@ -77,7 +77,7 @@ namespace OnTheLaneOfHike.Controllers
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Admin", "Home");
                 }
                 else
                 {
@@ -89,7 +89,7 @@ namespace OnTheLaneOfHike.Controllers
             }
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddToAdmin(string id)
         {
@@ -104,25 +104,25 @@ namespace OnTheLaneOfHike.Controllers
                 MemberModel user = await userManager.FindByIdAsync(id);
                 await userManager.AddToRoleAsync(user, adminRole.Name);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin", "Home");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> RemoveFromAdmin(string id)
         {
             MemberModel user = await userManager.FindByIdAsync(id);
             var result = await userManager.RemoveFromRoleAsync(user, "Admin");
             if (result.Succeeded) { }
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin", "Home");
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteRole(string id)
         {
             IdentityRole role = await roleManager.FindByIdAsync(id);
             var result = await roleManager.DeleteAsync(role);
             if (result.Succeeded) { }
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin", "Home");
         }
 
         [HttpPost]
@@ -130,7 +130,7 @@ namespace OnTheLaneOfHike.Controllers
         {
             var result = await roleManager.CreateAsync(new IdentityRole("Admin"));
             if (result.Succeeded) { }
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin", "Home");
         }
     }
 }

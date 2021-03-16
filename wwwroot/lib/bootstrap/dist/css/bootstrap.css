@@ -287,7 +287,14 @@ input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
 }
+input [type=text] {
+    background-color: yellowgreen;
+}
 
+input [type=password] {
+    border: 2px solid red;
+    background-color: yellowgreen;
+}
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],

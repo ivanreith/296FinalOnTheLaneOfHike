@@ -71,7 +71,7 @@ namespace OnTheLaneOfHike.Controllers
 
         [Authorize]
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult EditPost(int id)
         {
             ViewBag.Action = "Edit";
             ViewBag.Users = dbcontext.Members.OrderBy(g => g.Name).ToList();
@@ -82,27 +82,20 @@ namespace OnTheLaneOfHike.Controllers
         }
         [Authorize]
         [HttpPost]
-        public IActionResult Edit(PostModel post)
+        public IActionResult EditPost(PostModel post)
         {
             if (ModelState.IsValid)
-            {   
-                if (post.PostID == 0)
-                {
-                  
+            {
+              
+               
                     post.Member = userManager.GetUserAsync(User).Result;
                     post.Member.Name = post.Member.UserName;
                     post.PostTime = DateTime.Now;
-                    Repo.AddPost(post);
-                }
-                else
-                {
-                    post.Member = userManager.GetUserAsync(User).Result;
-                    post.Member.Name = post.Member.UserName;
-                    post.PostTime = DateTime.Now;
+                    post.ProfilePicture = post.ProfilePicture;
                     Repo.UpdatePost(post);
                     return RedirectToAction("Index", "Post");
-                }
-                return RedirectToAction("Index","Post" );
+                
+                
             }
             else
             {
@@ -126,10 +119,12 @@ namespace OnTheLaneOfHike.Controllers
             }
             return uniqueFileName;
         }
+       
+
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult DeletePost(int id)
         {
 
             var post = dbcontext.Posts.Find(id);
@@ -137,7 +132,7 @@ namespace OnTheLaneOfHike.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult Delete(PostModel post)
+        public IActionResult DeletePost(PostModel post)
         {
             Repo.DeletePost(post);
             return RedirectToAction("Index", "Post");

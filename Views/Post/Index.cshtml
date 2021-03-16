@@ -19,15 +19,16 @@
         {
             @foreach (var post in Model)
             {
-                <tr>
-                    <th>Title</th>
-                    <th>Topic</th>
-                    <th>Text</th>
-                    <th>User Name</th>
-                    <th>Last Updated</th>
-                    <th></th>
+        <tr>
+            <th>Picture</th>
+            <th>Title</th>
+            <th>Topic</th>
+            <th>Text</th>
+            <th>User Name</th>
+            <th>Last Updated</th>
+            <th></th>
 
-                </tr>
+        </tr>
                 <tr>
                     <td>
                         <img src="~/images/@post.ProfilePicture"
@@ -51,10 +52,10 @@
                     <td>
                         @if (User.IsInRole("Admin"))
                         {
-                            <a asp-controller="Post" asp-action="Edit"
+                            <a asp-controller="Post" asp-action="EditPost"
                                asp-route-id="@post.PostID"
                                asp-route-slug="@post.Slug">Edit</a>
-                            <a asp-controller="Post" asp-action="Delete"
+                            <a asp-controller="Post" asp-action="DeletePost"
                                asp-route-id="@post.PostID"
                                asp-route-slug="@post.Slug">Delete</a>
                         }
