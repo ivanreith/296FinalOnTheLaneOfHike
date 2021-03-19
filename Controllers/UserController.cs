@@ -10,20 +10,20 @@ using System.Threading.Tasks;
 namespace OnTheLaneOfHike.Controllers
 {
     [Authorize]
-    //[Area("Admin")]
+   
     public class UserController : Controller
     {
         private UserManager<MemberModel> userManager;
         private RoleManager<IdentityRole> roleManager;
-        // private StoriesRepository storyRepo;
+       
         public UserController(UserManager<MemberModel> userMngr,
-            RoleManager<IdentityRole> roleMngr)  //, StoriesRepository storiesRepo  => to add 
+            RoleManager<IdentityRole> roleMngr)  
         {
-            // storyRepo = storiesRepo;
+           
             userManager = userMngr;
             roleManager = roleMngr;
         }
-
+       
         public async Task<IActionResult> Admin()
         {
             List<MemberModel> users = new List<MemberModel>();
@@ -58,7 +58,7 @@ namespace OnTheLaneOfHike.Controllers
                     TempData["message"] = errorMessage;
                 }
             }
-            return RedirectToAction("Admin", "Home");
+            return RedirectToAction("Admin", "User");
         }
 
         [HttpGet]
@@ -77,7 +77,7 @@ namespace OnTheLaneOfHike.Controllers
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Admin", "Home");
+                    return RedirectToAction("Admin", "User");
                 }
                 else
                 {
@@ -104,7 +104,7 @@ namespace OnTheLaneOfHike.Controllers
                 MemberModel user = await userManager.FindByIdAsync(id);
                 await userManager.AddToRoleAsync(user, adminRole.Name);
             }
-            return RedirectToAction("Admin", "Home");
+            return RedirectToAction("Admin", "User");
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
@@ -113,7 +113,7 @@ namespace OnTheLaneOfHike.Controllers
             MemberModel user = await userManager.FindByIdAsync(id);
             var result = await userManager.RemoveFromRoleAsync(user, "Admin");
             if (result.Succeeded) { }
-            return RedirectToAction("Admin", "Home");
+            return RedirectToAction("Admin", "User");
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
@@ -122,7 +122,7 @@ namespace OnTheLaneOfHike.Controllers
             IdentityRole role = await roleManager.FindByIdAsync(id);
             var result = await roleManager.DeleteAsync(role);
             if (result.Succeeded) { }
-            return RedirectToAction("Admin", "Home");
+            return RedirectToAction("Admin", "User");
         }
 
         [HttpPost]
@@ -130,7 +130,7 @@ namespace OnTheLaneOfHike.Controllers
         {
             var result = await roleManager.CreateAsync(new IdentityRole("Admin"));
             if (result.Succeeded) { }
-            return RedirectToAction("Admin", "Home");
+            return RedirectToAction("Admin", "User");
         }
     }
 }

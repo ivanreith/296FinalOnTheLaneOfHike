@@ -29,12 +29,15 @@
                         }
             </td>
             <td>
+                @if (User.Identity.Name != member.Name)
+                {
                 <form background-color="light-green" asp-controller="User" method="post" asp-action="Delete"
                       asp-route-id="@member.Id">
                     <button type="submit" class="btn btn-danger">
                         Delete User
                     </button>
                 </form>
+                }
             </td>
             <td>
                 <form method="post" asp-controller="User" asp-action="AddToAdmin"
@@ -57,7 +60,7 @@
         }
     </tbody>
 </table>
-@*    // disabled for being only one rol
+
 
     <h1 class="mb-2">Manage Roles</h1>
 
@@ -94,4 +97,4 @@
                 </tbody>
             </table>
             <br />
-        }*@
+        }

@@ -10,17 +10,18 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace OnTheLaneOfHike.Controllers
-{
+{ 
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private RoleManager<IdentityRole> roleManager;
+       
         private UserManager<MemberModel> userManager;
+        private RoleManager<IdentityRole> roleManager;
         public HomeController(ILogger<HomeController> logger, UserManager<MemberModel> userMngr, RoleManager<IdentityRole> roleMngr)
         {
-            _logger = logger;
-            roleManager = roleMngr;
+            _logger = logger;         
             userManager = userMngr;
+            roleManager = roleMngr;
         }
 
         public IActionResult Index()
@@ -35,24 +36,8 @@ namespace OnTheLaneOfHike.Controllers
         public IActionResult Login(string returnURL = "")
         {
             var model = new LoginViewModel { ReturnUrl = returnURL };
-            return View(model); 
+            return View(model);
         }
-        public async Task<IActionResult> Admin()
-            {
-                List<MemberModel> members = new List<MemberModel>();
-                foreach (MemberModel member in userManager.Users)
-                {
-                member.RoleNames = await userManager.GetRolesAsync(member);
-                members.Add(member);
-                }
-
-                MemberViewModel model = new MemberViewModel
-                {
-                    Members = members,
-                    Roles = roleManager.Roles
-                };
-                return View(model);
-            }
         
         public IActionResult Register()
         {

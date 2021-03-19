@@ -35,7 +35,6 @@ D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\OnTh
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\OnTheLaneOfHike.pdb
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\OnTheLaneOfHike.genruntimeconfig.cache
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\OnTheLaneOfHike.csproj.CopyComplete
-D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Home\Admin.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Info\CovidInfo.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Info\Index.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Info\Weather.cshtml.g.cs
@@ -122,3 +121,4 @@ D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razo
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\DeleteEvent.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\DeleteProposal.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Shared\DeletePost.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Admin.cshtml.g.cs

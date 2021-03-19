@@ -96,7 +96,6 @@ D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\Ra
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\Razor\Views\Event\EditProposal.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\Razor\Views\Event\Index.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\Razor\Views\Event\Proposal.cshtml.g.cs
-D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\Razor\Views\Home\Admin.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\Razor\Views\Info\CovidInfo.cshtml.g.cs
@@ -122,3 +121,4 @@ D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\On
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\OnTheLaneOfHike.dll
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\OnTheLaneOfHike.pdb
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\OnTheLaneOfHike.genruntimeconfig.cache
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Release\netcoreapp3.1\Razor\Views\Shared\Admin.cshtml.g.cs

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace OnTheLaneOfHike.Models
 {
-    public class DataBaseContext : IdentityDbContext
+    public class DataBaseContext : IdentityDbContext<MemberModel>
     {
         public DataBaseContext()
         {
