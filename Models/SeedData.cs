@@ -33,9 +33,8 @@ namespace OnTheLaneOfHike.Models
 
             }
 
-
-
         }
+
 
 
 

@@ -1,6 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<ProposalModel>
 @{
+    ViewBag.Title = "Events";
 }
-<h1>Event Proposal</h1>
+<h1>Proposals Page</h1>
+@if (User.Identity.IsAuthenticated)
+{
+<a class="nav-link text-dark" asp-area="" asp-controller="Event" asp-action="AddProposal">Propose an Event</a>
+}
+<table class="table table-bordered table-striped">
+    <thead>
+
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var proposal in Model)
+            {
+                <tr>
+                    <th>Title</th>                  
+                    <th>Text</th>
+                    <th>User Name</th>
+                    <th>Last Updated</th>
+                    <th></th>
+
+                </tr>
+                <tr>
+                    <td>@proposal.ProposalTitle</td>
+                    <td>@proposal.ProposalText</td>
+
+                    @if (proposal.Member.UserName != null)
+                    {
+                        <td>@proposal.Member.UserName</td>
+                    }
+                    else
+                    {
+                        <td>Member not found</td>
+                    }
+                    <td>@proposal.ProposalTime</td>
+                    @if (User.IsInRole("Admin") || User.Identity.Name == proposal.Member.Name)
+                    {
+                        <td>
+                            <a asp-controller="Event" asp-action="EditProposal"
+                               asp-route-id="@proposal.ProposalID"
+                               asp-route-slug="@proposal.Slug">Edit</a>
+                            <a asp-controller="Event" asp-action="DeleteProposal"
+                               asp-route-id="@proposal.ProposalID"
+                               asp-route-slug="@proposal.Slug">Delete</a>
+
+                        </td>
+                    }
+                </tr> 
+            }
+        }
+    </tbody>
+</table>

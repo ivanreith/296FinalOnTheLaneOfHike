@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAaxgOxbwxs0iHvRqSaptQ/wAAAAACAAAAAAAQZgAAAAEAACAAAACSkMAiR5BO1cfqA9MSem4tX+V7a906u74tl797Ncp8mgAAAAAOgAAAAAIAACAAAACAaJek/luKHAI1qPQbHTw4DBu3XZ49xerwmovzu5JR/yAAAAAhSSc/Fboj/VqZCIQFYi4zXFrvIlgYKk4tm39ZKnJrOUAAAADTUbT3fa5vYdc6TgSraJur1lnE3WzlEbHmczUPiGch1GGZx4TodgpSdL5EoYhrUIf99rjZoaAglwMjXCTFtp7X</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DataBaseContext">
+      <Value>Data Source=SQL5103.site4now.net%3bInitial Catalog=DB_A6ED5D_Hike%3bUser Id=DB_A6ED5D_Hike_admin%3bPassword=ivan2733%40</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="OnTheLaneOfHike.Models.DataBaseContext">
+      <Value>Data Source=SQL5103.site4now.net%3bInitial Catalog=DB_A6ED5D_Hike%3bUser Id=DB_A6ED5D_Hike_admin%3bPassword=ivan2733%40</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

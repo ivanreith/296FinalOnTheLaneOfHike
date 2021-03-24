@@ -4,5 +4,43 @@
 @{
 }
 <h1>Info Page</h1>
-<a class="nav-link text-dark" asp-area="" asp-controller="Info" asp-action="CovidInfo">Information about covid19</a>
-<a class="nav-link text-dark" asp-area="" asp-controller="Info" asp-action="Weather">Quick info about weather</a>
+<div class="row">
+    <div class="col-md-5">
+        <h4>Some info about Covid:</h4>
+        
+    </div>
+    <div class="col-md-2">
+        <p></p>
+    </div>
+    <div class="col-md-5">
+        <h4>Weather info :</h4>       
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="thumbnail">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Info" asp-action="CovidInfo">
+                <img src="~/images/VirusMask.jpg" style="width:100%" />
+            </a>
+
+            <div class="caption">
+                <p>Some news about Covid</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="thumbnail">
+
+            <a class="nav-link text-dark" asp-area="" asp-controller="Info" asp-action="Weather">
+                <img src="~/images/IMG_20191203_112619.jpg" style="width:100%"  />
+            </a>
+
+            <div class="caption">
+                <p>Some info about the weather</p>
+            </div>
+
+        </div>
+    </div>
+    
+</div>

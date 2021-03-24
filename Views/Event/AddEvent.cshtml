@@ -1,0 +1,45 @@
+﻿@model EventViewModel
+@{
+    ViewData["Title"] = "Add Post";
+}
+<h1>Add  Page</h1>
+
+<div class="col-md-10 mx-auto py-4">
+    <div class="card">
+        <div class="card-header bg-success text-uppercase text-white">
+            <h4>Add New </h4>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-action="AddEvent">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="EventTitle" class="control-label"></label>
+                            <input asp-for="EventTitle" class="form-control" />
+                            <span asp-validation-for="EventTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="EventText" class="control-label"></label>
+                            <input asp-for="EventText" class="form-control" />
+                            <span asp-validation-for="EventText" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="EventTime" class="control-label"></label>
+                            <input asp-for="EventTime" type="date" class="form-control" />
+                            <span asp-validation-for="EventTime" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="submit" class="btn btn-sm btn-success rounded-0 text-uppercase" />
+                    <a asp-action="Index" class="btn btn-sm btn-warning rounded-0 text-uppercase"><i class="fas fa-fast-backward"></i> Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

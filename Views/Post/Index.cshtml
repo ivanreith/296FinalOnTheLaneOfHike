@@ -2,29 +2,41 @@
 @{
     ViewBag.Title = "Story";
 }
-
+<br />
+<br />
 <h2>Tell us about your hiking adventures.</h2>
 
-<a asp-controller="Post" asp-action="Add">Add your adventure!</a>
+<a asp-controller="Post" asp-action="AddPost">Add your adventure!</a>
 <table class="table table-bordered table-striped">
     <thead>
 
     </thead>
+
     <tbody>
+
+
         @if (Model != null)
         {
             @foreach (var post in Model)
             {
-                <tr>
-                    <th>Title</th>
-                    <th>Topic</th>
-                    <th>Text</th>
-                    <th>User Name</th>
-                    <th>Last Updated</th>
-                    <th></th>
+        <tr>
+            <th>Picture</th>
+            <th>Title</th>
+            <th>Topic</th>
+            <th>Text</th>
+            <th>User Name</th>
+            <th>Last Updated</th>
+            <th></th>
 
-                </tr>
+        </tr>
                 <tr>
+                    <td>
+                        <img src="~/images/@post.ProfilePicture"
+                             class=""
+                              width="150"
+                             asp-append-version="true" /><br />
+                        @post.Member.UserName
+                    </td>
                     <td>@post.PostTitle</td>
                     <td>@post.PostTopic</td>
                     <td>@post.PostText</td>
@@ -37,14 +49,18 @@
                         <td>Story without user</td>
                     }
                     <td>@post.PostTime</td>
-                    <td>
-                        <a asp-controller="Post" asp-action="Edit"
-                           asp-route-id="@post.PostID"
-                           asp-route-slug="@post.Slug">Edit</a>
-                        <a asp-controller="Post" asp-action="Delete"
-                           asp-route-id="@post.PostID"
-                           asp-route-slug="@post.Slug">Delete</a>
-                        <a asp-controller="Post" asp-action="Comment"
+                    <td>@if (post.Member.Name == User.Identity.Name || User.IsInRole("Admin"))
+                    {
+
+                   
+                            <a asp-controller="Post" asp-action="EditPost"
+                               asp-route-id="@post.PostID"
+                               asp-route-slug="@post.Slug">Edit</a>
+                            <a asp-controller="Post" asp-action="DeletePost"
+                               asp-route-id="@post.PostID"
+                               asp-route-slug="@post.Slug">Delete</a>
+                        }
+                        <a asp-controller="Post" asp-action="AddComment"
                            asp-route-id="@post.PostID"
                            asp-route-slug="@post.Slug">Comment</a>
                     </td>
@@ -59,32 +75,32 @@
                     </tr>
                     @foreach (CommentModel comment in post.Comments)
                     {
-                        <tr>
-                            <td></td>
-                            <td>
-                                <strong>-</strong>
-                                @comment.CommentText
-                            </td>
-                            <td>
-                                <strong>Posted By:</strong>
-                                @comment.Member.Name
-                            </td>
-                            <td>
-                                <strong>When:</strong>
-                                @comment.CommentDate
-                            </td>
-
-
-                        </tr>
+    <tr>
+        <td></td>
+        <td>
+            <strong>-</strong><br />
+            @comment.CommentText
+        </td>
+        <td>
+            <strong>Posted By:</strong><br />
+            @comment.Member.Name
+        </td>
+        <td>
+            <strong>When:</strong><br />
+            @comment.CommentDate
+        </td>
+        <td></td>
+        <td>
+            @if (comment.Member.Name == User.Identity.Name || User.IsInRole("Admin"))
+            {
+                <a color="red" asp-controller="Post" asp-action="DeleteComment"
+                   asp-route-id="@comment.CommentId"
+                    asp-route-slug="@post.Slug"> &lt;= Delete this Comment</a>
+            }
+            </td>
+</tr>
                     }
                 }
-
-
-
-
-
-
-
             }
         }
     </tbody>

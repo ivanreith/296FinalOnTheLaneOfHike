@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace OnTheLaneOfHike.Models
 {
-    public class DataBaseContext : IdentityDbContext
+    public class DataBaseContext : IdentityDbContext<MemberModel>
     {
-       // public DataBaseContext()
-       // {
-      //  }
+        public DataBaseContext()
+        {
+        }
 
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base(options)
@@ -21,7 +21,7 @@ namespace OnTheLaneOfHike.Models
         public DbSet<CommentModel> Comments { get; set; }
         public DbSet<PostModel> Posts { get; set; }
         public DbSet<MemberModel> Members { get; set; } //REmoved due to Identity inheritance, parent class would do it
-        public DbSet<EventModel> Events { get; set; }
+        public DbSet<EventModel> Event { get; set; }
         public DbSet<ProposalModel> Proposals { get; set; }
     }
 }

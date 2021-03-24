@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,10 @@ namespace OnTheLaneOfHike
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddResponseCaching();// security add
             services.AddTransient<IAppRepository, AppRepository>(); // repository Interface then repo class
+            services.AddTransient<IEventsRepository, EventsRepository>();
+            services.AddTransient<IProposalRepository, ProposalRepository>();
             services.AddControllersWithViews();
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("DataBaseContext")));
@@ -51,13 +55,42 @@ namespace OnTheLaneOfHike
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.Use(async (ctx, next) => {  //for header not set error
+                ctx.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                ctx.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+                await next();
+            });
+
+            // cache control
+        
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
-                    
-            app.UseAuthorization();
+            app.UseResponseCaching(); // security add
             app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.Use(async (context, next) =>  // security add
+            {
+                context.Response.GetTypedHeaders().CacheControl =
+                    new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+                    {
+                        Public = true,
+                        MaxAge = TimeSpan.FromSeconds(10),
+                        NoCache = true,
+                        NoStore = true,
+                        MustRevalidate = true,
+                        Private=true
+                    };
+                context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
+                    new string[] { "Accept-Encoding" };
+
+                await next();
+            });
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -65,10 +98,8 @@ namespace OnTheLaneOfHike
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         
-            var serviceProvider = app.ApplicationServices;
-           // var userManager = serviceProvider.GetRequiredService<UserManager<MemberModel>>();
-           // var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-          //  SeedData.CreateAdminUser(serviceProvider).Wait();
+        
+            SeedData.CreateAdminUser(app.ApplicationServices).Wait();
         }
     }
 }

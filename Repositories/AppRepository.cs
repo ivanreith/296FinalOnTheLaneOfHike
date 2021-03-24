@@ -45,11 +45,10 @@ namespace OnTheLaneOfHike.Repositories
                     }
                 }
             }
-
-
             context.Posts.Remove(post);
             context.SaveChanges();
         }
+
         public void UpdatePost(PostModel post)
         {
             context.Posts.Update(post); 
@@ -63,32 +62,42 @@ namespace OnTheLaneOfHike.Repositories
                         select p).FirstOrDefault<PostModel>();           
             return post;
         }
+
         public void DeleteComment(CommentModel comment)
         {
-            throw new NotImplementedException();
+            context.Comments.Remove(comment);
+            context.SaveChanges();
         }
-
 
         public CommentModel GetCommentById(int Id)
         {
-            throw new NotImplementedException();
+            CommentModel comment = (from c in context.Comments
+                                    where c.CommentId == Id
+                                    select c).FirstOrDefault();
+            return comment;
         }
 
         public List<CommentModel> GetComments()
         {
-            throw new NotImplementedException();
+            List<CommentModel> comments = (from c in context.Comments
+                                           select c).ToList();
+            return comments;
         }
 
         public List<CommentModel> GetCommentsByPost(int Id)
         {
-            throw new NotImplementedException();
+            List<CommentModel> comments = (from c in context.Comments
+                                           where c.PostID == Id
+                                           select c).ToList();
+            return comments;
         }
 
         
 
         public void UpdateComment(CommentModel comment)
         {
-            throw new NotImplementedException();
+            context.Comments.Update(comment);
+            context.SaveChanges();
         }
 
       

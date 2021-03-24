@@ -1,0 +1,24 @@
+﻿@model EventModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+@{
+    string title = ViewBag.Action + " Post";
+    ViewBag.Title = title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h2>Confirm Deletion</h2>
+<h3>@Model.EventTitle (@Model.EventText)</h3>
+
+<form asp-action="DeleteEvent" method="post">
+    <input type="hidden" asp-for="EventID" />
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-controller="Event" asp-action="Index"
+       class="btn btn-warning">Cancel</a>
+</form>

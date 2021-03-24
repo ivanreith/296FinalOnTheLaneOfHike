@@ -1,0 +1,24 @@
+﻿@model PostModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+@{
+    string title = ViewBag.Action + " Post";
+    ViewBag.Title = title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h2>Confirm Deletion</h2>
+<h3>@Model.PostTitle (@Model.PostTopic)</h3>
+
+<form asp-action="DeletePost" method="post">
+    <input type="hidden" asp-for="PostID" />
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Post" asp-action="Index"
+       class="btn btn-primary">Cancel</a>
+</form>

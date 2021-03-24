@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OnTheLaneOfHike.Models;
 using System;
@@ -8,14 +10,18 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace OnTheLaneOfHike.Controllers
-{
+{ 
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+       
+        private UserManager<MemberModel> userManager;
+        private RoleManager<IdentityRole> roleManager;
+        public HomeController(ILogger<HomeController> logger, UserManager<MemberModel> userMngr, RoleManager<IdentityRole> roleMngr)
         {
-            _logger = logger;
+            _logger = logger;         
+            userManager = userMngr;
+            roleManager = roleMngr;
         }
 
         public IActionResult Index()
@@ -30,12 +36,9 @@ namespace OnTheLaneOfHike.Controllers
         public IActionResult Login(string returnURL = "")
         {
             var model = new LoginViewModel { ReturnUrl = returnURL };
-            return View(model); 
+            return View(model);
         }
-        public IActionResult Admin()
-        {
-            return View();
-        }
+        
         public IActionResult Register()
         {
             return View();
@@ -45,5 +48,8 @@ namespace OnTheLaneOfHike.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+ 
+    
+       
     }
 }

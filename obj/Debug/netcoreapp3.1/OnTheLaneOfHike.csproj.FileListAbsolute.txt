@@ -35,13 +35,11 @@ D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\OnTh
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\OnTheLaneOfHike.pdb
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\OnTheLaneOfHike.genruntimeconfig.cache
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\OnTheLaneOfHike.csproj.CopyComplete
-D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Home\Admin.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Info\CovidInfo.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Info\Index.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Info\Weather.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Login.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Register.cshtml.g.cs
-D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Post\Comment.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Post\Index.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\Index.cshtml.g.cs
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Shared\AccessDenied.cshtml.g.cs
@@ -114,3 +112,13 @@ D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\bin\Debug\netcoreapp3.1\runt
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\bin\Debug\netcoreapp3.1\appsettings.Production.json
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Post\EditPost.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\AddEvent.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\AddProposal.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\EditEvent.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\EditProposal.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Post\AddComment.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\DeleteEvent.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Event\DeleteProposal.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Shared\DeletePost.cshtml.g.cs
+D:\TRANSFER ASUS\CS296\FinalProject\OnTheLaneOfHike\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Admin.cshtml.g.cs

@@ -7,7 +7,7 @@
 <h2>Login</h2>
 
 <div asp-validation-summary="All" class="text-danger"></div>
-<form method="post" asp-action="LogIn" asp-route-returnUrl="@Model.ReturnUrl">
+<form method="post"asp-controller="Account" asp-action="LogIn" asp-route-returnUrl="@Model.ReturnUrl">
 
 
     <div class="form-group row">
@@ -40,13 +40,48 @@
         </div>
     </div>
     <div class="row">
-        <div class="offset-2 col-sm-4">
-            <button type="submit" class="btn btn-primary">Log In</button>
+        <div class="offset-2 col-md-4">
+            <button type="submit" class="btn btn-success">Log In</button>
+            <a asp-controller="Home" asp-action="Index"
+               class="btn btn-warning">Cancel</a>
+        </div>
+        <div class="offset-2 col-md-2">          
+        </div>
+        <div class="offset-2 col-sm-6">
+            <p></p>
         </div>
     </div>
-    <div class="row">
-        <div class="offset-2 col-sm-4">
-            Not registered? <a asp-action="Register">Register as a new user</a>
+        <div class="row">
+            <div class="offset-2 col-sm-4">
+                Not registered? <a asp-action="Register">Register as a new user</a>
+            </div>
         </div>
-    </div>
 </form>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="~/images/IMG_20190919_173236.jpg"style="width:100%" />            
+            <div class="caption">
+                <p>Some lake</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="~/images/IMG_20191108_103258.jpg"style="width:100%" />            
+            <div class="caption">
+                <p>Some pretty tree :)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="~/images/IMG_20200109_100108.jpg"style="width:100%" />          
+            <div class="caption">
+                <p>Another tree.</p>
+            </div>
+        </div>
+    </div>
+</div>

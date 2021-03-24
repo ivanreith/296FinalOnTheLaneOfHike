@@ -1,0 +1,82 @@
+﻿@model PostModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+@{
+    string title = ViewBag.Action + " Story";
+    ViewBag.Title = title;
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="col-md-10 mx-auto py-4">
+    <div class="card">
+        <div class="card-header bg-success text-uppercase text-white">
+            <h4>Add New </h4>
+        </div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" method="post" asp-action="EditPost">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="PostTitle">Title</label>
+                            <input asp-for="PostTitle" class="form-control">
+                            <span asp-validation-for="PostTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="PostTopic">Topic</label>
+                            <input asp-for="PostTopic" class="form-control">
+                            <span asp-validation-for="PostTopic" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="PostText">Text</label>
+                            <input asp-for="PostText" class="form-control">
+                            <span asp-validation-for="PostText" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+        <div class="row">
+
+            <div  class="col-md-12">
+                <div class="form-group">
+                   
+                    <div class="custom-file">
+                        <input type="hidden" asp-for="ProfilePicture" class="custom-file-input" id="customFile">
+                        
+                    </div>
+                    <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <input type="hidden" asp-for="PostID" value=@Model.PostID />
+
+        <button type="submit" class="btn btn-success">@ViewBag.Action</button>
+        <a asp-controller="Post" asp-action="Index"
+            class="btn btn-warning">Cancel</a>
+</form>
+            </div >
+            </div >
+            </div >
+            @section scripts{
+                <script type="text/javascript">
+
+                    // Add the following code if you want the name of the file appear on select
+                    $(".custom-file-input").on("change", function () {
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                    });
+                </script>
+            }

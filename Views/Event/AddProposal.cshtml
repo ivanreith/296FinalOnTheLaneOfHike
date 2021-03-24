@@ -1,0 +1,45 @@
+﻿@model ProposalViewModel
+@{
+    ViewData["Title"] = "Add Post";
+}
+<h1>Add Proposal Page</h1>
+
+<div class="col-md-10 mx-auto py-4">
+    <div class="card">
+        <div class="card-header bg-success  text-uppercase text-white">
+            <h4>Add New Proposal</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" asp-controller="Event" asp-action="AddProposal">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="ProposalTitle" class="control-label"></label>
+                            <input asp-for="ProposalTitle" class="form-control" />
+                            <span asp-validation-for="ProposalTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="ProposalText" class="control-label"></label>
+                            <input asp-for="ProposalText" class="form-control" />
+                            <span asp-validation-for="ProposalText" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="ProposalTime" class="control-label"></label>
+                            <input asp-for="ProposalTime" type="date" class="form-control" />
+                            <span asp-validation-for="ProposalTime" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="submit" class="btn btn-sm btn-success rounded-0 text-uppercase" />
+                    <a asp-action="Proposal" class="btn btn-sm btn-warning rounded-0 text-uppercase"><i class="fas fa-fast-backward"></i> Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
