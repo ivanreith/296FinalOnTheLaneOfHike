@@ -30,8 +30,8 @@ namespace OnTheLaneOfHike.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                MemberModel user = new MemberModel { UserName = model.UserName, Name = model.UserName };
-                    var result = await userManager.CreateAsync(user, model.Password);
+                var user = new MemberModel { UserName = model.UserName, Name = model.UserName }; 
+                var result = await userManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
                         await signInManager.SignInAsync(user, isPersistent: false);

@@ -15,8 +15,7 @@ namespace OnTheLaneOfHike.Controllers
         IEventsRepository Repo { get; set; }
         IProposalRepository Repopro { get; set; }
         DataBaseContext Context { get; set; }
-        UserManager<MemberModel> userManager;
-        private SignInManager<MemberModel> signInManager;
+        UserManager<MemberModel> userManager;     
         public EventController(IEventsRepository r, DataBaseContext c, UserManager<MemberModel> m,IProposalRepository rp)
         {
             Context = c;

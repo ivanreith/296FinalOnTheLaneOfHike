@@ -32,9 +32,12 @@ namespace OnTheLaneOfHike
             services.AddTransient<IAppRepository, AppRepository>(); // repository Interface then repo class
             services.AddTransient<IEventsRepository, EventsRepository>();
             services.AddTransient<IProposalRepository, ProposalRepository>();
+            services.AddMvc();
             services.AddControllersWithViews();
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("DataBaseContext")));
+
+           
             // Stuff added for Identity
             services.AddIdentity<MemberModel, IdentityRole>()
              .AddEntityFrameworkStores<DataBaseContext>()
@@ -55,12 +58,12 @@ namespace OnTheLaneOfHike
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.Use(async (ctx, next) => {  //for header not set error
+            /* app.Use(async (ctx, next) => {  //for header not set error
                 ctx.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
                 ctx.Response.Headers.Add("X-Content-Type-Options", "nosniff");
                 await next();
             });
-
+            */
             // cache control
         
 
@@ -71,8 +74,8 @@ namespace OnTheLaneOfHike
             app.UseResponseCaching(); // security add
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.Use(async (context, next) =>  // security add
+            
+          /*  app.Use(async (context, next) =>  // security add
             {
                 context.Response.GetTypedHeaders().CacheControl =
                     new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
@@ -89,8 +92,9 @@ namespace OnTheLaneOfHike
 
                 await next();
             });
+          */
 
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -99,7 +103,7 @@ namespace OnTheLaneOfHike
             });
         
         
-            SeedData.CreateAdminUser(app.ApplicationServices).Wait();
+            DataBaseContext.CreateAdminUser(app.ApplicationServices).Wait();
         }
     }
 }

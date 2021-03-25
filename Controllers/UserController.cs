@@ -66,7 +66,7 @@ namespace OnTheLaneOfHike.Controllers
         {
             return View();
         }
-
+        /*
         [HttpPost]
         public async Task<IActionResult> Add(RegisterViewModel model)
         {
@@ -88,7 +88,7 @@ namespace OnTheLaneOfHike.Controllers
                 }
             }
             return View(model);
-        }
+        }*/
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddToAdmin(string id)
